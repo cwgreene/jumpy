@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://nbgeojo5gslg"]
+[gd_scene load_steps=29 format=3 uid="uid://nbgeojo5gslg"]
 
 [ext_resource type="Texture2D" uid="uid://bx222wuqibyms" path="res://Tiny Swords/Tiny Swords (Update 010)/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="1_1p0va"]
 [ext_resource type="Script" path="res://KnightScript.gd" id="2_37n6b"]
@@ -26,6 +26,22 @@ region = Rect2(768, 0, 192, 192)
 [sub_resource type="AtlasTexture" id="AtlasTexture_u436t"]
 atlas = ExtResource("1_1p0va")
 region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu46v"]
+atlas = ExtResource("1_1p0va")
+region = Rect2(384, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enr2o"]
+atlas = ExtResource("1_1p0va")
+region = Rect2(576, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4ly1"]
+atlas = ExtResource("1_1p0va")
+region = Rect2(768, 576, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88hu6"]
+atlas = ExtResource("1_1p0va")
+region = Rect2(960, 576, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4fsb"]
 atlas = ExtResource("1_1p0va")
@@ -114,6 +130,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_qu46v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enr2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4ly1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88hu6")
+}],
+"loop": true,
+"name": &"Fast Slash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_i4fsb")
 }, {
 "duration": 1.0,
@@ -178,6 +211,9 @@ position = Vector2(-1, 0)
 
 [node name="KnightAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_54n8b")
-animation = &"InitJump"
-frame_progress = 0.589595
+animation = &"Fast Slash"
 script = ExtResource("2_37n6b")
+
+[connection signal="animation_finished" from="KnightAnimation" to="KnightAnimation" method="_on_animation_finished"]
+[connection signal="animation_looped" from="KnightAnimation" to="KnightAnimation" method="_on_animation_looped"]
+[connection signal="frame_changed" from="KnightAnimation" to="KnightAnimation" method="_on_frame_changed"]
