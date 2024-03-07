@@ -1,4 +1,5 @@
 extends ColorRect
+class_name Toolbox
 
 var current_tile = Vector2i(0,0)
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://r804osqif85n"]
+[gd_scene load_steps=10 format=3 uid="uid://r804osqif85n"]
 
 [ext_resource type="Texture2D" uid="uid://dy2ut77aoei25" path="res://data/Blocks.png" id="1_1ccth"]
+[ext_resource type="Script" path="res://Scenes/TilePicker/GameRegion.gd" id="1_a1n5e"]
 [ext_resource type="Script" path="res://Scenes/TilePicker/TileAlternate.gd" id="2_dv58v"]
 [ext_resource type="Script" path="res://Scenes/TilePicker/Toolbox.gd" id="3_jygji"]
 [ext_resource type="Script" path="res://Scenes/TilePicker/TileButton.gd" id="4_r0rkb"]
@@ -34,13 +35,24 @@ sources/0 = SubResource("TileSetAtlasSource_fbx7d")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="GameRegion" type="Polygon2D" parent="."]
+color = Color(0.239216, 0.239216, 0.239216, 1)
+polygon = PackedVector2Array(0, 0, 0, 648, 960, 648, 960, 0)
+script = ExtResource("1_a1n5e")
 
-[node name="Gametiles" type="TileMap" parent="."]
+[node name="Gametiles" type="TileMap" parent="GameRegion"]
 tile_set = SubResource("TileSet_huqwi")
 cell_quadrant_size = 32
 format = 2
+layer_0/name = "Base Layer"
 layer_0/tile_data = PackedInt32Array(0, 65536, 0, 1, 0, 0, 65536, 0, 1, 65537, 65536, 1)
+layer_1/name = "Ghost Layer"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 0.431373)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
 script = ExtResource("2_dv58v")
 
 [node name="Toolbox" type="ColorRect" parent="." groups=["Toolbox"]]
