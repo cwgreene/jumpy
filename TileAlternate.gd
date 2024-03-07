@@ -14,14 +14,7 @@ func _input(event):
 			toggle = false
 			var cell = self.local_to_map(event.position)
 			var atlas = self.get_cell_atlas_coords(0, cell)
-			print(atlas)
-			if atlas == Vector2i(-1,-1):
-				print("Unmapped")
-				return
-			var idx = ((atlas.x + 2*atlas.y) + 1) % 4
-			var newpos = Vector2i(idx % 2, (idx/2))
-			print(newpos)
-			self.set_cell(0, cell, 0, newpos)
+			self.set_cell(0, cell, 0, get_tree().get_first_node_in_group("Toolbox").current_tile)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

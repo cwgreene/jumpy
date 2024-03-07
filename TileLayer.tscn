@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://r804osqif85n"]
+[gd_scene load_steps=9 format=3 uid="uid://r804osqif85n"]
 
 [ext_resource type="Texture2D" uid="uid://dy2ut77aoei25" path="res://data/Blocks.png" id="1_bx8b5"]
 [ext_resource type="Script" path="res://TileAlternate.gd" id="2_o36dv"]
+[ext_resource type="Script" path="res://Toolbox.gd" id="3_2sxma"]
+[ext_resource type="Script" path="res://TileButton.gd" id="3_rqagu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h57ly"]
 texture = ExtResource("1_bx8b5")
@@ -17,11 +19,61 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_h57ly")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fbx7d"]
+texture = ExtResource("1_bx8b5")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_pv2el"]
+sources/0 = SubResource("TileSetAtlasSource_fbx7d")
+
 [node name="Node2D" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="Gametiles" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_huqwi")
 cell_quadrant_size = 32
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 65536, 0, 1, 0, 0, 65536, 0, 1, 65537, 65536, 1)
 script = ExtResource("2_o36dv")
+
+[node name="Toolbox" type="ColorRect" parent="." groups=["Toolbox"]]
+offset_left = 960.0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0862745, 0.0862745, 0.0862745, 1)
+script = ExtResource("3_2sxma")
+
+[node name="RedTile" type="Button" parent="Toolbox" groups=["ToolboxButtons"]]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 88.0
+offset_right = 48.0
+offset_bottom = 120.0
+script = ExtResource("3_rqagu")
+
+[node name="Tile" type="TileMap" parent="Toolbox/RedTile"]
+position = Vector2(8, 8)
+tile_set = SubResource("TileSet_pv2el")
+cell_quadrant_size = 8
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 0)
+
+[node name="RedTile2" type="Button" parent="Toolbox" groups=["ToolboxButtons"]]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 88.0
+offset_right = 128.0
+offset_bottom = 120.0
+script = ExtResource("3_rqagu")
+
+[node name="Tile" type="TileMap" parent="Toolbox/RedTile2"]
+position = Vector2(8, 8)
+tile_set = SubResource("TileSet_pv2el")
+cell_quadrant_size = 8
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 65536, 0)
