@@ -6,9 +6,12 @@ var toggle = false
 func _ready():
 	pass # Replace with function body.
 
-func _input(event):
+# We're using unhandled input here to let the gui have the
+# first crack at all events.
+func _unhandled_input(event):
 	if event is InputEventMouse:
-		if event.is_pressed():
+		if event.is_pressed():	
+			print("I saw the input.")
 			toggle = true
 		if event.is_released() and toggle:
 			toggle = false
