@@ -63,15 +63,45 @@ cell_quadrant_size = 8
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 0, 0)
 
-[node name="RedTile2" type="Button" parent="Toolbox" groups=["ToolboxButtons"]]
+[node name="GreenTile" type="Button" parent="Toolbox" groups=["ToolboxButtons"]]
 layout_mode = 0
-offset_left = 96.0
+offset_left = 16.0
+offset_top = 136.0
+offset_right = 48.0
+offset_bottom = 168.0
+script = ExtResource("3_rqagu")
+
+[node name="Tile" type="TileMap" parent="Toolbox/GreenTile"]
+position = Vector2(8, 8)
+tile_set = SubResource("TileSet_pv2el")
+cell_quadrant_size = 8
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 1)
+
+[node name="BlueTile" type="Button" parent="Toolbox" groups=["ToolboxButtons"]]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 136.0
+offset_right = 96.0
+offset_bottom = 168.0
+script = ExtResource("3_rqagu")
+
+[node name="Tile" type="TileMap" parent="Toolbox/BlueTile"]
+position = Vector2(8, 8)
+tile_set = SubResource("TileSet_pv2el")
+cell_quadrant_size = 8
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 65536, 1)
+
+[node name="PurpleTile" type="Button" parent="Toolbox" groups=["ToolboxButtons"]]
+layout_mode = 0
+offset_left = 64.0
 offset_top = 88.0
-offset_right = 128.0
+offset_right = 96.0
 offset_bottom = 120.0
 script = ExtResource("3_rqagu")
 
-[node name="Tile" type="TileMap" parent="Toolbox/RedTile2"]
+[node name="Tile" type="TileMap" parent="Toolbox/PurpleTile"]
 position = Vector2(8, 8)
 tile_set = SubResource("TileSet_pv2el")
 cell_quadrant_size = 8
