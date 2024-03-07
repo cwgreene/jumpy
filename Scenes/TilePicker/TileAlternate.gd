@@ -6,14 +6,17 @@ var toggle = false
 func _ready():
 	pass # Replace with function body.
 
+func _input(event):
+	# Unconditionally clear ghost layer. This handles the
+	# situation where we move the cursor out of it.
+	self.clear_layer(1)
+
 # We're using unhandled input here to let the gui have the
 # first crack at all events.
 func _unhandled_input(event):
 	if event is InputEventMouse:
 		var toolbox = get_tree().get_first_node_in_group("Toolbox")
-		print(toolbox)
 		var active_tile = toolbox.current_tile
-		self.clear_layer(1)
 		var cell = self.local_to_map(event.position)
 		self.set_cell(1, cell, 0, active_tile)
 		if event.is_pressed():
