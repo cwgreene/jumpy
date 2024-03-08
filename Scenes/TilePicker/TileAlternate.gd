@@ -15,7 +15,7 @@ func _input(event):
 # first crack at all events.
 func _unhandled_input(event):
 	if event is InputEventMouse:
-		var toolbox = get_tree().get_first_node_in_group("Toolbox")
+		var toolbox = get_tree().get_first_node_in_group("Toolbox") as Toolbox
 		var active_tile = toolbox.current_tile
 		var cell = self.local_to_map(event.position)
 		self.set_cell(1, cell, 0, active_tile)
